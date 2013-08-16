@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_DEVICE),mako)
+ifeq ($(TARGET_DEVICE),geeb)
 
 # This is ugly for more reasons than I can mention. Don't think
 # that this is a good idea. It's not. It's horrible. It's truly

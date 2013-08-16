@@ -24,8 +24,8 @@ then
   ZIP=occam-ota-573038.zip
   BUILD=jdq39
 fi # jb-mr1.1-dev
-ROOTDEVICE=mako
-DEVICE=mako
+ROOTDEVICE=geeb
+DEVICE=geeb
 MANUFACTURER=lge
 
 for COMPANY in broadcom lge qcom

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 #
-# Input Device Calibration File for the Mako touch screen.
+# Input Device Calibration File for the geeb touch screen.
 #
 
 device.internal = 1
@@ -30,3 +30,6 @@ touch.pressure.calibration = amplitude
 touch.pressure.scale = 0.0125
 
 touch.orientation.calibration = none
+
+keyboard.layout = keypad_8064
+

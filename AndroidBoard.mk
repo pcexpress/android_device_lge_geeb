@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-TARGET_PREBUILT_KERNEL := device/lge/mako-kernel/kernel
-endif
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+#TARGET_PREBUILT_KERNEL := device/lge/geeb-kernel/kernel
+#endif
