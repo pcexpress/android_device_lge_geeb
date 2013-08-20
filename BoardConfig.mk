@@ -121,6 +121,8 @@ TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
+BOARD_RIL_CLASS := ../../../device/lge/geeb/ril/
+
 BOARD_SEPOLICY_DIRS += \
         device/lge/geeb/sepolicy
 
@@ -154,4 +156,4 @@ BOARD_SEPOLICY_UNION += \
 	ueventd.te \
 	wpa_supplicant.te
 
-BOARD_HARDWARE_CLASS := device/lge/mako/cmhw/
+BOARD_HARDWARE_CLASS := device/lge/geeb/cmhw/

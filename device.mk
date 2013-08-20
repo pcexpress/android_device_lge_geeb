@@ -250,6 +250,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.ril.def.preferred.network=9
 
 PRODUCT_PROPERTY_OVERRIDES += \
+        ro.telephony.ril_class=GeebRIL
+
+PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
