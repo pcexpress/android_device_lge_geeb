@@ -277,6 +277,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.ril.tx_headphone_override=Handset
 
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/fetch-swv:system/bin/fetch-swv
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # This is the mako-specific audio package
