@@ -23,7 +23,7 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := full_geeb
+PRODUCT_NAME := slim_geeb
 PRODUCT_DEVICE := geeb
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Optimus G
