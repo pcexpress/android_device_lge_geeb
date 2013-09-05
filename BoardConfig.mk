@@ -41,8 +41,10 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 
 TARGET_OTA_ASSERT_DEVICE := mako,geeb,gee_a,e970,gee,geebus
 
-# Try to build the kernel
+# Inline kernel building
+TARGET_KERNEL_SOURCE := kernel/lge/geeb
 TARGET_KERNEL_CONFIG := geeb_f_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro/bin/arm-linux-gnueabihf-
 
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_LEGACY_ALSA_AUDIO:= false
@@ -86,6 +88,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_UI_LIB := librecovery_ui_geeb
 
 TARGET_RECOVERY_FSTAB = device/lge/geeb/fstab.geeb
+RECOVERY_FSTAB_VERSION = 2
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 23068672 # 22M
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 23068672 # 22M
