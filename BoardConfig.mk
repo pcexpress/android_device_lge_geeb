@@ -43,7 +43,7 @@ TARGET_OTA_ASSERT_DEVICE := mako,geeb,gee_a,e970,gee,geebus
 
 # Inline kernel building
 TARGET_KERNEL_SOURCE := kernel/lge/geeb
-TARGET_KERNEL_CONFIG := geeb_defconfig
+TARGET_KERNEL_CONFIG := geeb_f_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro/bin/arm-linux-gnueabihf-
 
 BOARD_USES_ALSA_AUDIO:= true
