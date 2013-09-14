@@ -44,6 +44,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
         OTAUpdater-1.0.5
+ 
+PRODUCT_PACKAGES += \
+        CMFileManager       
 
 #LOCAL_KERNEL := device/lge/geeb-kernel/kernel
 
