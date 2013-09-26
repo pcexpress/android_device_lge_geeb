@@ -42,12 +42,6 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
-PRODUCT_PACKAGES += \
-        OTAUpdater-1.0.5
- 
-PRODUCT_PACKAGES += \
-        CMFileManager       
-
 #LOCAL_KERNEL := device/lge/geeb-kernel/kernel
 
 #PRODUCT_COPY_FILES := \
