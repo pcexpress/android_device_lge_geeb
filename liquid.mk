@@ -15,10 +15,10 @@
 #
 
 # Target Release Name
-PRODUCT_RELEASE_NAME := liquid_mako
+PRODUCT_RELEASE_NAME := liquid_geeb
 
 # Inherit device configuration
-$(call inherit-product, device/lge/mako/full_mako.mk)
+$(call inherit-product, device/lge/mako/full_geeb.mk)
 
 # Standard
 $(call inherit-product, vendor/liquid/config/common_phone.mk)
@@ -32,7 +32,7 @@ PRODUCT_NAME := liquid_geeb
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := Optimus G
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=liquid.mako.$(shell date +%m%d%y).$(shell date +%H%M%S)
+PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=liquid.geeb.$(shell date +%m%d%y).$(shell date +%H%M%S)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_NUMBER=737497 \
