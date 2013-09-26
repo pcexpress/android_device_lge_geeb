@@ -27,10 +27,10 @@ $(call inherit-product, vendor/liquid/config/common_phone.mk)
 $(call inherit-product, vendor/liquid/config/common_gsm.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := mako
-PRODUCT_NAME := liquid_mako
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Nexus 4
+PRODUCT_DEVICE := geeb
+PRODUCT_NAME := liquid_geeb
+PRODUCT_BRAND := LGE
+PRODUCT_MODEL := Optimus G
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=liquid.mako.$(shell date +%m%d%y).$(shell date +%H%M%S)
 
@@ -40,7 +40,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=occam \
     TARGET_BUILD_TYPE=user \
     BUILD_VERSION_TAGS=release-keys \
-    BUILD_FINGERPRINT="google/occam/mako:4.3/JWR66V/737497:user/release-keys" \
+    BUILD_FINGERPRINT="google/occam/geeb:4.3/JWR66V/737497:user/release-keys" \
     PRIVATE_BUILD_DESC="occam-user 4.3 JWR66V 737497 release-keys"
 
 # Enable Torch
