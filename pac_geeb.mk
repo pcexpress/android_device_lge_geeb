@@ -21,10 +21,10 @@ PRODUCT_RELEASE_NAME := pac_geeb
 $(call inherit-product, device/lge/geeb/full_geeb.mk)
 
 # Standard
-$(call inherit-product, vendor/cm/config/common_phone.mk)
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # GSM RIL Parts
-$(call inherit-product, vendor/cm/config/common_gsm.mk)
+$(call inherit-product, vendor/cm/config/gsm.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := geeb
