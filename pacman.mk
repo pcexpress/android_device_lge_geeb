@@ -15,20 +15,20 @@
 #
 
 # Target Release Name
-PRODUCT_RELEASE_NAME := liquid_geeb
+PRODUCT_RELEASE_NAME := pacman_geeb
 
 # Inherit device configuration
 $(call inherit-product, device/lge/geeb/full_geeb.mk)
 
 # Standard
-$(call inherit-product, vendor/liquid/config/common_phone.mk)
+$(call inherit-product, vendor/cm/config/common_phone.mk)
 
 # GSM RIL Parts
-$(call inherit-product, vendor/liquid/config/common_gsm.mk)
+$(call inherit-product, vendor/cm/config/common_gsm.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := geeb
-PRODUCT_NAME := liquid_geeb
+PRODUCT_NAME := pacman_geeb
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := Optimus G
 PRODUCT_MANUFACTURER := LGE
