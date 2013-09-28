@@ -15,7 +15,7 @@
 #
 
 # Target Release Name
-PRODUCT_RELEASE_NAME := pacman_geeb
+PRODUCT_RELEASE_NAME := pac_geeb
 
 # Inherit device configuration
 $(call inherit-product, device/lge/geeb/full_geeb.mk)
