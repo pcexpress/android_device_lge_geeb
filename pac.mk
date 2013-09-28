@@ -28,11 +28,11 @@ $(call inherit-product, vendor/cm/config/common_gsm.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := geeb
-PRODUCT_NAME := pacman_geeb
+PRODUCT_NAME := pac_geeb
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := Optimus G
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=pacman.geeb.$(shell date +%m%d%y).$(shell date +%H%M%S)
+PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=pac.geeb.$(shell date +%m%d%y).$(shell date +%H%M%S)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_NUMBER=737497 \
