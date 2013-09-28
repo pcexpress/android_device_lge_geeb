@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo pacman_geeb-userdebug
+add_lunch_combo pac_geeb-userdebug
