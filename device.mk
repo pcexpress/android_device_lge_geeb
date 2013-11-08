@@ -35,28 +35,24 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     charger
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
-PRODUCT_PACKAGES += \
-        OTAUpdater-1.0.5
- 
-PRODUCT_PACKAGES += \
-        CMFileManager       
-
-#LOCAL_KERNEL := device/lge/geeb-kernel/kernel
-
-#PRODUCT_COPY_FILES := \
-#	$(LOCAL_KERNEL):kernel
-
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+
+ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
+LOCAL_KERNEL := device/lge/geeb_svelte-kernel/kernel
+else
+LOCAL_KERNEL := kernel/lge/geeb
+endif
+
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
+
+# Script for baseband name resolution
+PRODUCT_COPY_FILES += \
+	device/lge/geeb/fetch-swv:system/bin/fetch-swv \
+	device/lge/geeb/efsbackup.sh:system/bin/efsbackup.sh
 
 PRODUCT_COPY_FILES += \
 	device/lge/geeb/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
@@ -110,13 +106,10 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-# GPS configuration
-PRODUCT_COPY_FILES += \
-	device/lge/geeb/gps.conf:system/etc/gps.conf
 
-# vold configuration
+# NFC firmware
 PRODUCT_COPY_FILES += \
-        device/lge/geeb/vold.fstab:system/etc/vold.fstab
+	device/lge/geeb/prebuilt/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -138,7 +131,8 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
@@ -157,7 +151,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false \
 	af.resampler.quality=4
-
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -185,7 +178,8 @@ PRODUCT_PACKAGES += \
 	liboverlay \
 	hwcomposer.msm8960 \
 	gralloc.msm8960 \
-	copybit.msm8960
+	copybit.msm8960 \
+	memtrack.msm8960
 
 PRODUCT_PACKAGES += \
 	audio_policy.msm8960 \
@@ -227,12 +221,22 @@ PRODUCT_PACKAGES += \
 	libstagefrighthw \
 	libc2dcolorconvert
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+        device/lge/geeb/gps.conf:system/etc/gps.conf
+
+# GPS
 PRODUCT_PACKAGES += \
-	libloc_adapter \
-	libloc_eng \
-	libloc_api_v02 \
-	libgps.utils \
-	gps.msm8960
+        libloc_adapter \
+        libloc_eng \
+        libloc_api_v02 \
+        libloc_ds_api \
+        libloc_core \
+        libizat_core \
+        libgeofence \
+        libgps.utils \
+        gps.msm8960 \
+        flp.msm8960
 
 PRODUCT_PACKAGES += \
 	bdAddrLoader \
@@ -243,8 +247,8 @@ PRODUCT_PACKAGES += \
 	keystore.msm8960
 
 PRODUCT_PACKAGES += \
-	wpa_supplicant_overlay.conf \
-	p2p_supplicant_overlay.conf
+        wpa_supplicant_overlay.conf \
+        p2p_supplicant_overlay.conf
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
@@ -256,14 +260,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.ril.def.preferred.network=9
 
 PRODUCT_PROPERTY_OVERRIDES += \
-        ro.telephony.ril_class=GeebRIL
-
-PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
-	wifi.supplicant_scan_interval=15
+	wifi.supplicant_scan_interval=120
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -279,13 +280,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
-# override voice tx device when on headphones with no mic(needed for JB radio)
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.ril.tx_headphone_override=Handset
-
-PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/fetch-swv:system/bin/fetch-swv
-
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
+# This is the geeb-specific audio package
+#$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)

@@ -16,3 +16,6 @@
 $(call inherit-product, device/lge/geeb/full_geeb.mk)
 
 PRODUCT_NAME := aosp_geeb
+
+PRODUCT_PACKAGES += \
+    Launcher3
